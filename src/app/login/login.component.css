@@ -1,0 +1,28 @@
+.login-content {
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.example-full-width {
+    width: 80%;
+}
+
+.submit-button {
+    margin-bottom: 0.5rem;
+}
+
+.error-msg {
+    text-align: center;
+    color: red;
+    margin-bottom: 0.5rem;
+}
+
+.password-style {
+    border: none;
+    background-color: white;
+}
+
+.bottom-links {
+    font-size: 0.8rem;
+    margin-left: 0.2rem;
+}

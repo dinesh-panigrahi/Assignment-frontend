@@ -1,0 +1,57 @@
+<div class="content">
+    <h1 class="text-center">
+        <span *ngIf="data === 'create'">Create an user
+        </span>
+        <span *ngIf="data === 'edit'">Edit your details
+        </span>
+    </h1>
+    <div *ngIf="data === 'edit'">
+        <form [formGroup]="editUserForm" (ngSubmit)="editUser()">
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter book name</mat-label>
+                <input matInput required formControlName="name">
+                <mat-error *ngIf="e.name.errors">
+                    <div *ngIf="e.name.errors.required">Name is required</div>
+                </mat-error>
+            </mat-form-field><br>
+            <button class="submit-button" type="submit">
+                Edit user
+            </button>
+        </form>
+    </div>
+    <div *ngIf="data === 'create'">
+        <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter name</mat-label>
+                <input matInput required formControlName="name">
+                <mat-error *ngIf="c.name.errors">
+                    <div *ngIf="c.name.errors.required">Name is required</div>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter email</mat-label>
+                <input matInput required formControlName="email">
+                <mat-error *ngIf="c.email.errors">
+                    <div *ngIf="c.email.errors.required">Email is required</div>
+                    <div *ngIf="c.email.errors.email">Email must be a valid email address</div>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="password-style">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="c.password.errors">
+                    <div *ngIf="c.password.errors.required">Password is required</div>
+                </mat-error>
+            </mat-form-field>
+            <div>
+                <button class="submit-button text-center" type="submit">
+                    Sign up
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.signup-content {
+    width: 90%;
+    margin: auto;
+}
+
+.example-full-width {
+    width: 90%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.submit-button {
+    margin: 0 auto;
+}
+
+.password-style {
+    border: none;
+    background-color: white;
+}

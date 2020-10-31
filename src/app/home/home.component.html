@@ -1,0 +1,16 @@
+<div class="container">
+    <button mat-raised-button color="primary" class="button-margin" (click)="createBook()">Create book</button>
+    <button mat-raised-button color="primary" class="button-margin" (click)="editUserDetails()">Edit your
+        details</button>
+    <button mat-raised-button color="primary" (click)="createUser()">Create user</button>
+
+    <div *ngIf="books.length > 0">
+        <h3>Your books</h3>
+        <ol>
+            <li *ngFor="let book of books">
+                {{book.bookName}}
+                <button (click)="editBook(book)">Edit</button>
+            </li>
+        </ol>
+    </div>
+</div>

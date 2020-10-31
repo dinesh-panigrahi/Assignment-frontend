@@ -1,0 +1,39 @@
+<div class="background">
+    <div class="login-content">
+        <h1 class="text-center">Login</h1>
+        <div class="error-msg" *ngIf="errorMsg">
+            {{errorMsg}}
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter email</mat-label>
+                <input matInput required formControlName="userName">
+                <mat-error *ngIf="f.userName.errors">
+                    <div *ngIf="f.userName.errors.required">Email is required</div>
+                    <div *ngIf="f.userName.errors.email">Email must be a valid email address</div>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="password-style">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="f.password.errors">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                </mat-error>
+            </mat-form-field>
+            <div>
+                <button class="w3-button w3-round-xlarge w3-black submit-button" type="submit">
+                    Login
+                </button>
+            </div>
+            <div class="row">
+                <a routerLink="/signup" class="col bottom-links">
+                    new to portal,Signup?
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

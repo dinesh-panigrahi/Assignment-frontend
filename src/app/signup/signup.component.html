@@ -1,0 +1,41 @@
+<div class="signup-content">
+    <h1 class="text-center">Welcome to User book guide</h1>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter name</mat-label>
+            <input matInput required formControlName="name">
+            <mat-error *ngIf="f.name.errors">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter email</mat-label>
+            <input matInput required formControlName="email">
+            <mat-error *ngIf="f.email.errors">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide" class="password-style">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="f.password.errors">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+            </mat-error>
+        </mat-form-field>
+        <div>
+            <button class="submit-button text-center" type="submit">
+                Sign up
+            </button>
+        </div>
+        <div>
+            <a routerLink="/login">
+                Existing user,login?
+            </a>
+        </div>
+    </form>
+</div>

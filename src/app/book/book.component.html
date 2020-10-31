@@ -1,0 +1,20 @@
+<div class="content">
+    <h1 class="text-center">
+        <span *ngIf="!data">Create your book
+        </span>
+        <span *ngIf="data">Edit your book
+        </span>
+    </h1>
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter book name</mat-label>
+            <input matInput required formControlName="bookName">
+            <mat-error *ngIf="f.bookName.errors">
+                <div *ngIf="f.bookName.errors.required">Book name is required</div>
+            </mat-error>
+        </mat-form-field><br>
+        <button class="submit-button" type="submit">
+            {{data ? 'Edit book': 'create book'}}
+        </button>
+    </form>
+</div>
